@@ -25,7 +25,7 @@ $videoList = $pdo->query('SELECT * FROM videos;')->fetchAll(PDO::FETCH_ASSOC);
     <header>
 
         <nav class="cabecalho">
-            <a class="logo" href="./index.html"></a>
+            <a class="logo" href="/"></a>
 
             <div class="cabecalho__icones">
                 <a href="./pages/enviar-video.html" class="cabecalho__videos"></a>
@@ -50,8 +50,8 @@ $videoList = $pdo->query('SELECT * FROM videos;')->fetchAll(PDO::FETCH_ASSOC);
                     <img src="./img/logo.png" alt="logo canal alura">
                     <h3><?php echo $video['title'] ?></h3>
                     <div class="acoes-video">
-                        <a href="./pages/enviar-video.html">Editar</a>
                         <!-- A sintaxe com < ? = abaixo é igual a iniciar a tag php e fazer um echo -->
+                        <a href="/formulario.php?id=<?= $video['id'] ?>">Editar</a>
                         <a href="/remover-video.php?id=<?= $video['id']; ?>">Excluir</a>
                     </div>
                 </div>
