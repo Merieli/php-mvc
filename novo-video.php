@@ -8,7 +8,13 @@ $statement = $pdo->prepare($sql);
 
 //$_GET - é uma variável superglobal que contém os dados enviados via GET
 //$_POST - é uma variável superglobal que contém os dados enviados via POST, e entre chaves na sequencia deve ser passado o name do campo do formulário que se deseja capturar
-$url= $_POST['url'];
+// filter_input - filtra a entrada de dados, evitando que o usuário envie dados inválidos ou maliciosos
+$url= filter_input(INPUT_POST, 'url', FILTER_VALIDATE_URL);
+if ($url === false) {
+    header('Location: /index.php?sucesso=0');
+    exit();
+}
+
 $titulo = $_POST['titulo'];
 
 $statement->bindValue(1, $url);
