@@ -15,7 +15,8 @@ services:
       - 443:443 # https
     volumes:
       - ./:/var/www/${COMPOSE_PROJECT_NAME}
-      - vendor_data:/var/www/${COMPOSE_PROJECT_NAME}/vendor
+      - vendor_volume:/var/www/${COMPOSE_PROJECT_NAME}/vendor
 
 volumes:
-  vendor_data:
+  vendor_volume:
+    driver: local

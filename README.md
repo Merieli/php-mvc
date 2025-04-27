@@ -4,12 +4,12 @@ Comando para executar o Projeto
 
 ```sh
 # Inicia a execução de um servidor web embutido do PHP em nossa máquina, na porta 8080.
-php -S localhost:8080
+php -S localhost:8080 -t public
 ```
 
 Para executar o projeto dentro do container docker
 ```sh
-php -S 0.0.0.0:8080
+php -S 0.0.0.0:8080 -t public
 ```
 
 # Super globais do PHP

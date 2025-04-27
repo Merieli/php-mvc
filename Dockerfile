@@ -67,11 +67,12 @@ RUN addgroup -g ${GID} ${USER_NAME} \
 # --------------------------------------------------------------
 WORKDIR $APP_DIR
 
+# Cria o diretório vendor e define as permissões corretas
+RUN mkdir -p $APP_DIR/vendor && \
+    chown -R ${USER_NAME}:${USER_NAME} $APP_DIR
+
 # Copia os arquivos do composer.json e composer.lock para dentro do container
 COPY --chown=${USER_NAME}:${USER_NAME} composer* .
-
-# Altera o proprietário e o grupo do diretório da aplicação - definido pela variável $APP_DIR
-RUN chown ${USER_NAME}:${USER_NAME} $APP_DIR
 
 # Copio tudo que está na pasta src para dentro do container usando o usuário
 COPY --chown=${USER_NAME}:${USER_NAME} . .
@@ -91,7 +92,7 @@ RUN echo '#!/bin/sh' > /usr/local/bin/cmp && \
 
 # --------------------------------------------------------------
 
-    
+
 EXPOSE 8080
 
 USER $USER_NAME
