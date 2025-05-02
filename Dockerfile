@@ -78,8 +78,8 @@ COPY --chown=${USER_NAME}:${USER_NAME} composer* .
 COPY --chown=${USER_NAME}:${USER_NAME} . .
 
 # Remove as dependências antigas do composer
-# RUN [ -d "vendor" ] && rm -rf vendor || true
-# RUN composer install --no-interaction
+RUN [ -d "vendor" ] && rm -rf vendor || true
+RUN composer install --no-interaction
 
 
 # --------------------------------------------------------------

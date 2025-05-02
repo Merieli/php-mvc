@@ -12,7 +12,6 @@ services:
         USER_NAME: "${USER:-www-data}"
     ports:
       - 8080:8080
-      - 443:443 # https
     volumes:
       - ./:/var/www/${COMPOSE_PROJECT_NAME}
       - vendor_volume:/var/www/${COMPOSE_PROJECT_NAME}/vendor
